@@ -33,7 +33,6 @@ namespace LSMTESTS
 
                 Assert.IsTrue(DoubleExtensions.AreEqual(testCoef1[0], 0.5));
                 Assert.IsTrue(DoubleExtensions.AreEqual(testCoef1[1], -1.0));
-                Console.Write(testCoef2[0]);
                 Assert.IsTrue(DoubleExtensions.AreEqual(testCoef2[0], 0.3448275862));
             }
 
