@@ -23,7 +23,7 @@ namespace LSM_CS
 
             for (int i = 0; i < market.TrajectoriesNo; i ++)
             {
-                stoppingTime[i] = market.TrajectoryLength - 1;
+                stoppingTime.Add (market.TrajectoryLength - 1);
             }
 
             for (int i = market.TrajectoryLength-2; i >= 0; i --)
@@ -38,19 +38,22 @@ namespace LSM_CS
                         discountedPayoffs.Add(payoff[stoppingTime[j], j] * market.DiscountFactor(j, i, stoppingTime[j]));
                     }
                 }
-
-                List < Vector < double >> regressors = PositiveTrajectoriesValues(positiveIndexes, market, i);
-                formula.BuildModel(regressors, CreateVector.DenseOfEnumerable(discountedPayoffs));
-                RegressionCoefficients.SetRow(i, formula.Coefficients());
-                Vector<double> continuationValue = formula.Predict();
-
-                for (int k = 0; k<positiveIndexes.Count; k++)
+                if (positiveIndexes.Count>2)
                 {
-                    if (continuationValue[k] < payoff[i, positiveIndexes[k]])
+                    List<Vector<double>> regressors = PositiveTrajectoriesValues(positiveIndexes, market, i);
+                    formula.BuildModel(regressors, CreateVector.DenseOfEnumerable(discountedPayoffs));
+                    RegressionCoefficients.SetRow(i, formula.Coefficients());
+                    Vector<double> continuationValue = formula.Predict();
+
+                    for (int k = 0; k < positiveIndexes.Count; k++)
                     {
-                        stoppingTime[positiveIndexes[k]] = i;
+                        if (continuationValue[k] < payoff[i, positiveIndexes[k]])
+                        {
+                            stoppingTime[positiveIndexes[k]] = i;
+                        }
                     }
                 }
+                
 
             }
 
@@ -60,7 +63,7 @@ namespace LSM_CS
                 chosenPayoff[i] = payoff[stoppingTime[i], i];
             }
 
-            Price = market.DiscountToZero(stoppingTime).DotProduct(chosenPayoff);
+            Price = market.DiscountToZero(stoppingTime).DotProduct(chosenPayoff) / market.TrajectoriesNo;
         }
 
         private List<Vector<double>> PositiveTrajectoriesValues (List<int> positiveIndexes, Model market, int time)
@@ -68,14 +71,16 @@ namespace LSM_CS
             List<Matrix<double>> fullTrajectories = market.Trajectories();
             List<Vector<double>> result = new List<Vector<double>>(fullTrajectories.Count);
 
-            for (int i = 0; i < fullTrajectories.Count; i ++)
+
+            for (int i = 0; i < fullTrajectories.Count; i++)
             {
-                result[i] = CreateVector.Dense<double>(positiveIndexes.Count);
+                result.Add(CreateVector.Dense<double>(positiveIndexes.Count));
                 for (int j = 0; j < positiveIndexes.Count; j++)
                 {
                     result[i][j] = fullTrajectories[i][time, positiveIndexes[j]];
                 }
             }
+            
 
             return result;
         }
