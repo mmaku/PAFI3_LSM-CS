@@ -47,13 +47,16 @@ namespace LSMTESTS
             [TestMethod]
             public void CoeficientCountTest()
             {
-                Assert.AreEqual(testLR1.CoefficientsCount, 1);
-                Assert.AreEqual(testLR2.CoefficientsCount, 2);
+                Assert.AreEqual(testLR1.CoefficientsCount, 2);
+                Assert.AreEqual(testLR2.CoefficientsCount, 1);
             }
 
             [TestMethod]
             public void DataTest()
             {
+                testLR1.BuildModel(a, b);
+                testLR2.BuildModel(a, b);
+
                 Assert.AreEqual(testLR1.Data(), CreateMatrix.DenseOfColumnVectors<double>(new Vector<double>[2] {a, CreateVector.Dense<double>(3, 1.0)}));
                 Assert.AreEqual(testLR2.Data(), CreateMatrix.DenseOfColumnVectors<double>(a));
             }
