@@ -1,0 +1,18 @@
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSMTESTS\bin\Debug\LSMTESTS.dll
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSMTESTS\bin\Debug\LSMTESTS.pdb
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSMTESTS\bin\Debug\LSM-CS.dll
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSMTESTS\bin\Debug\MathNet.Numerics.dll
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSMTESTS\bin\Debug\LSM-CS.pdb
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSMTESTS\bin\Debug\MathNet.Numerics.xml
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSMTESTS\obj\Debug\LSMTESTS.csprojResolveAssemblyReference.cache
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSMTESTS\obj\Debug\LSMTESTS.dll
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSMTESTS\obj\Debug\LSMTESTS.pdb
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSMTESTS\bin\Debug\LSMTESTS.dll
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSMTESTS\bin\Debug\LSMTESTS.pdb
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSMTESTS\bin\Debug\LSM-CS.dll
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSMTESTS\bin\Debug\MathNet.Numerics.dll
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSMTESTS\bin\Debug\LSM-CS.pdb
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSMTESTS\bin\Debug\MathNet.Numerics.xml
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSMTESTS\obj\Debug\LSMTESTS.csprojResolveAssemblyReference.cache
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSMTESTS\obj\Debug\LSMTESTS.dll
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSMTESTS\obj\Debug\LSMTESTS.pdb

@@ -1,0 +1,15 @@
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSM-CS\obj\Debug\LSM-CS.csprojResolveAssemblyReference.cache
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSM-CS\obj\Debug\LSM-CS.dll
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSM-CS\obj\Debug\LSM-CS.pdb
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSM-CS\bin\Debug\LSM-CS.dll
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSM-CS\bin\Debug\LSM-CS.pdb
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSM-CS\bin\Debug\MathNet.Numerics.dll
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSM-CS\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Michal\Documents\IF2\02 Projekt II\LSM-CS\LSM-CS\bin\Debug\MathNet.Numerics.xml
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSM-CS\bin\Debug\LSM-CS.dll
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSM-CS\bin\Debug\LSM-CS.pdb
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSM-CS\bin\Debug\MathNet.Numerics.dll
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSM-CS\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSM-CS\bin\Debug\MathNet.Numerics.xml
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSM-CS\obj\Debug\LSM-CS.dll
+C:\Users\HP\Documents\IF2\P2\LSM-CS\LSM-CS\obj\Debug\LSM-CS.pdb
