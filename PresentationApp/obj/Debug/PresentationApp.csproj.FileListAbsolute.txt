@@ -1,8 +1,3 @@
-C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\PresentationApp.csprojResolveAssemblyReference.cache
-C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\MainWindow.g.cs
-C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\App.g.cs
-C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\PresentationApp_MarkupCompile.cache
-C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\PresentationApp_MarkupCompile.lref
 C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\bin\Debug\PresentationApp.exe
 C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\bin\Debug\PresentationApp.pdb
 C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\bin\Debug\Caliburn.Micro.dll
@@ -15,6 +10,11 @@ C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\bin\Debug\Caliburn.Micro.xml
 C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\bin\Debug\Caliburn.Micro.Platform.xml
 C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\bin\Debug\MathNet.Numerics.xml
 C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\PresentationApp.csprojResolveAssemblyReference.cache
+C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\MainWindow.g.cs
+C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\App.g.cs
+C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\PresentationApp_MarkupCompile.cache
+C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\PresentationApp_MarkupCompile.lref
 C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\MainWindow.baml
 C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\PresentationApp.g.resources
 C:\Users\HP\Documents\IF2\P2\LSM-CS\PresentationApp\obj\Debug\PresentationApp.Properties.Resources.resources
