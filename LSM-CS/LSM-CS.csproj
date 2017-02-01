@@ -49,6 +49,8 @@
     <Compile Include="FixedDiscount.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="ModelSimpleFixedRate.cs" />
+    <Compile Include="options\AmericanPut.cs" />
+    <Compile Include="options\EuropeanPut.cs" />
     <Compile Include="Pricer.cs" />
     <Compile Include="regression\BivariableRegression.cs" />
     <Compile Include="regression\LinearRegression.cs" />
