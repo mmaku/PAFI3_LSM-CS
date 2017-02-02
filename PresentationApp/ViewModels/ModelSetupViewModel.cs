@@ -11,6 +11,7 @@ namespace PresentationApp.ViewModels
 {
     public class ModelSetupViewModel : PropertyChangedBase
     {
+        // fields
         private bool hasAvg;
         private double rate = 0.05;
         private int assetCount = 1;
@@ -208,14 +209,17 @@ namespace PresentationApp.ViewModels
         //buttons handlers
         public void Volatility()
         {
+            throw new NotImplementedException();
             vol = ReadVector(this.assetCount);
         }
         public void Correlation()
         {
+            throw new NotImplementedException();
             cor = ReadMatrix(this.assetCount);
         }
         public void X0()
         {
+            throw new NotImplementedException();
             x0 = ReadVector(this.assetCount);
         }
         public void SetModel()
@@ -245,7 +249,7 @@ namespace PresentationApp.ViewModels
                                             x0,
                                             cor);
             }
-            System.Windows.MessageBox.Show("Model has been changed.");
+            System.Windows.MessageBox.Show("Model changed");
         }
         public void SetOption()
         {
@@ -267,7 +271,7 @@ namespace PresentationApp.ViewModels
                     ModelAppki.c = new LSM_CS.EuropeanPut(optionExp, optionStrike);
                     break;
             }
-            System.Windows.MessageBox.Show(ModelAppki.c.ToString());
+            System.Windows.MessageBox.Show("Option changed");
         }
         public void SetFormula()
         {
@@ -280,11 +284,13 @@ namespace PresentationApp.ViewModels
                     ModelAppki.formula = new LSM_CS.BivariableRegression(degree, degree, degree);
                     break;
             }
+            System.Windows.MessageBox.Show("Formula changed");
         }
         public void Eval()
         {
             ModelAppki.p = new LSM_CS.Pricer(ModelAppki.formula, ModelAppki.market, ModelAppki.c);
-            this.Price = ModelAppki.p.Price.ToString();
+            this.Price = ModelAppki.p.Price.ToString("0.##");
+            System.Windows.MessageBox.Show("Done");
         }
 
         private Vector<double> ReadVector(int length)
