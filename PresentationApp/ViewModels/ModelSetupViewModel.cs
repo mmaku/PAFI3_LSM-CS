@@ -22,10 +22,50 @@ namespace PresentationApp.ViewModels
         private double endTime = 1;
         private Vector<double> x0 = CreateVector.Dense<double>(1, 100);
         private int degree = 3;
+        private string optionType = "American Call";
         private double optionExp = 1;
         private double optionStrike = 100;
         private double price = 0;
-
+        private string selectedFormula = "Polynomial";
+        
+        public List<String> OptionChoice
+        {
+            get
+            {
+                return new List<string> { "American Call", "American Put", "Asian Floating Strike", "European Call", "European Put" };
+            }
+        }
+        public List<String> FormulaChoice
+        {
+            get
+            {
+                return new List<string> { "Polynomial", "Two Variables Mix" };
+            }
+        }
+        public string SelectedFormulaChoice
+        {
+            get
+            {
+                return this.selectedFormula;
+            }
+            set
+            {
+                this.selectedFormula = value;
+                NotifyOfPropertyChange(() => SelectedFormulaChoice);
+            }
+        }
+        public string SelectedOptionChoice
+        {
+            get
+            {
+                return this.optionType;
+            }
+            set
+            {
+                this.optionType = value;
+                this.NotifyOfPropertyChange(() => this.SelectedOptionChoice);
+            }
+        }
         //data binding
         public bool HasAvg
         {
@@ -204,6 +244,41 @@ namespace PresentationApp.ViewModels
                                             vol,
                                             x0,
                                             cor);
+            }
+            System.Windows.MessageBox.Show("Model has been changed.");
+        }
+        public void SetOption()
+        {
+            switch (optionType)
+            {
+                case "American Call":
+                    ModelAppki.c = new LSM_CS.AmericanCall(optionExp, optionStrike);
+                    break;
+                case "American Put":
+                    ModelAppki.c = new LSM_CS.AmericanPut(optionExp, optionStrike);
+                    break;
+                case "Asian Floating Strike":
+                    ModelAppki.c = new LSM_CS.AsianAmericanFloatingStrikeCall(optionExp);
+                    break;
+                case "European Call":
+                    ModelAppki.c = new LSM_CS.EuropeanCall(optionExp, optionStrike);
+                    break;
+                case "European Put":
+                    ModelAppki.c = new LSM_CS.EuropeanPut(optionExp, optionStrike);
+                    break;
+            }
+            System.Windows.MessageBox.Show(ModelAppki.c.ToString());
+        }
+        public void SetFormula()
+        {
+            switch (selectedFormula)
+            {
+                case "Polynomial":
+                    ModelAppki.formula = new LSM_CS.PolyRegression(degree);
+                    break;
+                case "Two Variables Mix":
+                    ModelAppki.formula = new LSM_CS.BivariableRegression(degree, degree, degree);
+                    break;
             }
         }
         public void Eval()

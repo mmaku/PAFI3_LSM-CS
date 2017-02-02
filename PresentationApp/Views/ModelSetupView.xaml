@@ -51,8 +51,6 @@
 
         <Label Grid.Column="2" Grid.Row="0" Content="Regression type"/>
         <ComboBox x:Name ="FormulaChoice" Grid.Column="3" Grid.Row="0" >
-            <ComboBoxItem IsSelected="True">Polynomial</ComboBoxItem>
-            <ComboBoxItem>Two Variables Mix</ComboBoxItem>
         </ComboBox>
         <Label Grid.Column="2" Grid.Row="1" Content="Degreee" />
         <TextBox x:Name="Degree" Grid.Column="3" Grid.Row="1"/>
@@ -60,11 +58,7 @@
 
         <Label Grid.Column="2" Grid.Row="5" Content="Option Type" />
         <ComboBox x:Name ="OptionChoice" Grid.Column="3" Grid.Row="5" >
-            <ComboBoxItem IsSelected="True">American Call</ComboBoxItem>
-            <ComboBoxItem>American Put</ComboBoxItem>
-            <ComboBoxItem>European Put</ComboBoxItem>
-            <ComboBoxItem>European Call</ComboBoxItem>
-            <ComboBoxItem>Asian Call Floating Strike</ComboBoxItem>
+
         </ComboBox>
         <Label Grid.Column="2" Grid.Row="6" Content="Expiry" />
         <TextBox x:Name="OptionExp" Grid.Column="3" Grid.Row="6" Text="1" />
