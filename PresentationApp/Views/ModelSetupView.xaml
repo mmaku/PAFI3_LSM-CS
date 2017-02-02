@@ -1,0 +1,80 @@
+﻿<Window x:Class="PresentationApp.Views.ModelSetupView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        SizeToContent="WidthAndHeight" WindowStyle="ToolWindow"  >
+    <Grid Height="auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100" Width="*"/>
+            <ColumnDefinition MinWidth="150" Width="*"/>
+            <ColumnDefinition MinWidth="100" Width="*"/>
+            <ColumnDefinition MinWidth="150" Width="*"/>
+            <ColumnDefinition MinWidth="100" Width="*"/>
+            <ColumnDefinition MinWidth="100" Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="Model Setup"/>
+        <CheckBox x:Name="HasAvg" Grid.Column="1" Grid.Row="0" Content="Include Average?"
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                  />
+        <Label Grid.Column="0" Grid.Row="1" Content="Interest Rate"/>
+        <TextBox x:Name="Rate" Grid.Column="1" Grid.Row="1"/>
+        <Label Grid.Column="0" Grid.Row="2" Content="Assets Count"/>
+        <TextBox x:Name="AssetCount" Grid.Column="1" Grid.Row="2"/>
+        <Label Grid.Column="0" Grid.Row="3" Content="Trajectories count"/>
+        <TextBox x:Name="TrajNo" Grid.Column="1" Grid.Row="3"/>
+        <Label Grid.Column="0" Grid.Row="4" Content="Volatility"/>
+        <Button x:Name="Volatility" Grid.Column="1" Grid.Row="4" Content="Set" />
+        <Label Grid.Column="0" Grid.Row="5" Content="Correlation Matrix"/>
+        <Label Grid.Column="0" Grid.Row="6" Content="Excercise times count"/>
+        <Button x:Name="Correlation" Grid.Column="1" Grid.Row="5" Content="Set" />
+        <TextBox x:Name="ExcNo" Grid.Row ="6" Grid.Column="1"/>
+        <Label Grid.Column="0" Grid.Row="7" Content="Asset start price"/>
+        <Button x:Name="X0" Grid.Column="1" Grid.Row="7" Content="Set" />
+        <Label Grid.Column="0" Grid.Row="8" Content="Seed Value"/>
+        <TextBox x:Name="Seed" Grid.Row="8" Grid.Column="1"/>
+        <Label Grid.Column="0" Grid.Row="9" Content="Model end time"/>
+        <TextBox x:Name="EndTime" Grid.Column="1" Grid.Row="9"/>
+
+        <Button x:Name="SetModel" Content="Set Model" Grid.Column="0" Grid.Row="10"  Grid.ColumnSpan="2" />
+
+        <Label Grid.Column="2" Grid.Row="0" Content="Regression type"/>
+        <ComboBox x:Name ="FormulaChoice" Grid.Column="3" Grid.Row="0" >
+            <ComboBoxItem IsSelected="True">Polynomial</ComboBoxItem>
+            <ComboBoxItem>Two Variables Mix</ComboBoxItem>
+        </ComboBox>
+        <Label Grid.Column="2" Grid.Row="1" Content="Degreee" />
+        <TextBox x:Name="Degree" Grid.Column="3" Grid.Row="1"/>
+        <Button x:Name="SetFormula" Grid.Column="2" Grid.Row="2" Content="Set Regression Formula" Grid.ColumnSpan="2" Grid.RowSpan="3" />
+
+        <Label Grid.Column="2" Grid.Row="5" Content="Option Type" />
+        <ComboBox x:Name ="OptionChoice" Grid.Column="3" Grid.Row="5" >
+            <ComboBoxItem IsSelected="True">American Call</ComboBoxItem>
+            <ComboBoxItem>American Put</ComboBoxItem>
+            <ComboBoxItem>European Put</ComboBoxItem>
+            <ComboBoxItem>European Call</ComboBoxItem>
+            <ComboBoxItem>Asian Call Floating Strike</ComboBoxItem>
+        </ComboBox>
+        <Label Grid.Column="2" Grid.Row="6" Content="Expiry" />
+        <TextBox x:Name="OptionExp" Grid.Column="3" Grid.Row="6" Text="1" />
+        <Label Grid.Column="2" Grid.Row="7" Content="Strike"/>
+        <TextBox x:Name="OptionStrike" Grid.Column="3" Grid.Row="7" Text="100"/>
+        <Button x:Name="SetOption" Grid.Column="2" Grid.Row="8" Content="Set Option" Grid.ColumnSpan="2" Grid.RowSpan="3" />
+
+        <Label Grid.Column="4" Grid.Row="1" Content="Price" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold"/>
+        <TextBox x:Name="Price" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" Text="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Button x:Name="Eval" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="4" Content="Evaluate" />
+
+    </Grid>
+</Window>
