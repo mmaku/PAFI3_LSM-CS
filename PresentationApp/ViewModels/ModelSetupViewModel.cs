@@ -27,13 +27,16 @@ namespace PresentationApp.ViewModels
         private double optionExp = 1;
         private double optionStrike = 100;
         private double price = 0;
+        private double volatility = 0.2;
+        private double rho = 0.9;
+        private double x_0 = 100;
         private string selectedFormula = "Polynomial";
         
         public List<String> OptionChoice
         {
             get
             {
-                return new List<string> { "American Call", "American Put", "Asian Floating Strike", "European Call", "European Put" };
+                return new List<string> { "American Call", "American Put", "Asian Floating Strike", "European Call", "European Put", "Binary Above","Binary Multiple" };
             }
         }
         public List<String> FormulaChoice
@@ -206,22 +209,67 @@ namespace PresentationApp.ViewModels
                 NotifyOfPropertyChange(() => this.Price);
             }
         }
+
+        public string Volatility
+        {
+            get
+            {
+                return this.volatility.ToString();
+            }
+            set
+            {
+                this.volatility = double.Parse(value);
+                vol = CreateVector.Dense<double>(this.assetCount, volatility);
+                NotifyOfPropertyChange(() => this.Volatility);
+            }
+        }
+        public string Correlation
+        {
+            get
+            {
+                //tu chyba powinno byc cos inaczej
+                return this.rho.ToString();
+            }
+            set
+            {
+                this.rho = double.Parse(value);
+                cor = CreateMatrix.DenseDiagonal<double>(this.assetCount, rho);
+                for (int j = 0; j < assetCount; j++)
+                {
+                    cor[j, j] = 1;
+                }
+                NotifyOfPropertyChange(() => this.Correlation);
+            }
+        }
+        public string X0
+        {
+            get
+            {
+                return this.x_0.ToString();
+            }
+            set
+            {
+                this.x_0 = double.Parse(value);
+                vol = CreateVector.Dense<double>(this.assetCount, x_0);
+                NotifyOfPropertyChange(() => this.X0);
+            }
+        }
         //buttons handlers
-        public void Volatility()
-        {
-            throw new NotImplementedException();
-            vol = ReadVector(this.assetCount);
-        }
-        public void Correlation()
-        {
-            throw new NotImplementedException();
-            cor = ReadMatrix(this.assetCount);
-        }
-        public void X0()
-        {
-            throw new NotImplementedException();
-            x0 = ReadVector(this.assetCount);
-        }
+        //public void Volatility()
+        //{
+        //    //throw new NotImplementedException();
+        //    vol = CreateVector.Dense<double>(this.assetCount, 0.1);
+        //}
+        //public void Correlation()
+        //{
+        //    throw new NotImplementedException();
+        //    cor = ReadMatrix(this.assetCount);
+        //}
+        //public void X0()
+        //{
+        //    throw new NotImplementedException();
+        //    x0 = ReadVector(this.assetCount);
+        //}
         public void SetModel()
         {
 
@@ -270,6 +318,12 @@ namespace PresentationApp.ViewModels
                 case "European Put":
                     ModelAppki.c = new LSM_CS.EuropeanPut(optionExp, optionStrike);
                     break;
+                case "Binary Above":
+                    ModelAppki.c = new LSM_CS.BinaryAbove(optionExp, optionStrike);
+                    break;
+                case "Binary Multiple":
+                    ModelAppki.c = new LSM_CS.BinaryAboveMultipleAssets(optionExp, optionStrike);
+                    break;
             }
             System.Windows.MessageBox.Show("Option changed");
         }
@@ -298,8 +352,7 @@ namespace PresentationApp.ViewModels
             Vector<double> result = CreateVector.Dense<double>(length, 0.1);
             for (int i = 0; i < length; i++)
             {
-                
-                //Console.WriteLine("Enter element: " + (i+1).ToString());
+               //Console.WriteLine("Enter element: " + (i+1).ToString());
                // result[i] = double.Parse(Console.ReadLine());
             }
             return result;
