@@ -51,6 +51,8 @@
     <Compile Include="ModelAsianAvgFixedRate.cs" />
     <Compile Include="ModelSimpleFixedRate.cs" />
     <Compile Include="options\AmericanPut.cs" />
+    <Compile Include="options\BinaryAbove.cs" />
+    <Compile Include="options\BinaryAboveMultipleAssets.cs" />
     <Compile Include="options\EuropeanPut.cs" />
     <Compile Include="Pricer.cs" />
     <Compile Include="regression\BivariableRegression.cs" />

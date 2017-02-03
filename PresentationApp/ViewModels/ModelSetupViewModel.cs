@@ -45,7 +45,7 @@ namespace PresentationApp.ViewModels
         {
             get
             {
-                return new List<string> { "American Call", "American Put", "Asian Floating Strike", "European Call", "European Put" };
+                return new List<string> { "American Call", "American Put", "Asian Floating Strike", "Binary American Call", "Binary American Call Multi Asset",  "European Call", "European Put" };
             }
         }
         public List<String> FormulaChoice
@@ -419,23 +419,10 @@ namespace PresentationApp.ViewModels
             return result;
 
         }
-        //buttons handlers
-        public void Correlation()
-        {
-            throw new NotImplementedException();
-            cor = ReadMatrix(this.assetCount);
-        }
-        public void X0()
-        {
-            throw new NotImplementedException();
-            x0 = ReadVector(this.assetCount);
-        }
+        
         public void SetModel()
         {
-            if (assetCount > 1)
-            {
-                System.Windows.MessageBox.Show(vol[1].ToString());
-            }
+            
             if (hasAvg)
             {
                 ModelAppki.market = new LSM_CS.ModelAsianAvgFixedRate(rate,
@@ -474,6 +461,12 @@ namespace PresentationApp.ViewModels
                     break;
                 case "Asian Floating Strike":
                     ModelAppki.c = new LSM_CS.AsianAmericanFloatingStrikeCall(optionExp);
+                    break;
+                case "Binary American Call":
+                    ModelAppki.c = new LSM_CS.BinaryAbove(optionExp, optionStrike);
+                    break;
+                case "Binary American Call Multi Asset":
+                    ModelAppki.c = new LSM_CS.BinaryAboveMultipleAssets(optionExp, optionStrike);
                     break;
                 case "European Call":
                     ModelAppki.c = new LSM_CS.EuropeanCall(optionExp, optionStrike);
