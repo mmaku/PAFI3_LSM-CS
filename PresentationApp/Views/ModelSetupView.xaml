@@ -35,13 +35,40 @@
         <Label Grid.Column="0" Grid.Row="3" Content="Trajectories count"/>
         <TextBox x:Name="TrajNo" Grid.Column="1" Grid.Row="3"/>
         <Label Grid.Column="0" Grid.Row="4" Content="Volatility"/>
-        <Button x:Name="Volatility" Grid.Column="1" Grid.Row="4" Content="Set" />
-        <Label Grid.Column="0" Grid.Row="5" Content="Correlation Matrix"/>
+        <Grid Grid.Column="1" Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="50" Width="*"/>
+                <ColumnDefinition MinWidth="50" Width="*"/>
+                <ColumnDefinition MinWidth="50" Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="Vol1" Grid.Column="0" TextAlignment="Center"/>
+            <TextBox x:Name="Vol2" Grid.Column="1" TextAlignment="Center"/>
+            <TextBox x:Name="Vol3" Grid.Column="2" TextAlignment="Center"/>
+        </Grid>
+        <Label Grid.Column="0" Grid.Row="5" Content="Correlations"/>
+        <Grid Grid.Column="1" Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="50" Width="*"/>
+                <ColumnDefinition MinWidth="50" Width="*"/>
+                <ColumnDefinition MinWidth="50" Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="Cor12" Grid.Column="0" TextAlignment="Center"/>
+            <TextBox x:Name="Cor13" Grid.Column="1" TextAlignment="Center"/>
+            <TextBox x:Name="Cor23" Grid.Column="2" TextAlignment="Center"/>
+        </Grid>
         <Label Grid.Column="0" Grid.Row="6" Content="Excercise times count"/>
-        <Button x:Name="Correlation" Grid.Column="1" Grid.Row="5" Content="Set" />
         <TextBox x:Name="ExcNo" Grid.Row ="6" Grid.Column="1"/>
         <Label Grid.Column="0" Grid.Row="7" Content="Asset start price"/>
-        <Button x:Name="X0" Grid.Column="1" Grid.Row="7" Content="Set" />
+        <Grid Grid.Column="1" Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="50" Width="*"/>
+                <ColumnDefinition MinWidth="50" Width="*"/>
+                <ColumnDefinition MinWidth="50" Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="X01" Grid.Column="0" TextAlignment="Center"/>
+            <TextBox x:Name="X02" Grid.Column="1" TextAlignment="Center"/>
+            <TextBox x:Name="X03" Grid.Column="2" TextAlignment="Center"/>
+        </Grid>
         <Label Grid.Column="0" Grid.Row="8" Content="Seed Value"/>
         <TextBox x:Name="Seed" Grid.Row="8" Grid.Column="1"/>
         <Label Grid.Column="0" Grid.Row="9" Content="Model end time"/>

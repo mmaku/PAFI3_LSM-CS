@@ -28,6 +28,18 @@ namespace PresentationApp.ViewModels
         private double optionStrike = 100;
         private double price = 0;
         private string selectedFormula = "Polynomial";
+
+        private double vol1 = 0.2;
+        private double vol2 = 0.2;
+        private double vol3 = 0.2;
+
+        private double cor12 = 0;
+        private double cor13 = 0;
+        private double cor23 = 0;
+
+        private double x01 = 100;
+        private double x02 = 100;
+        private double x03 = 100;
         
         public List<String> OptionChoice
         {
@@ -88,7 +100,7 @@ namespace PresentationApp.ViewModels
             }
             set
             {
-                this.rate = double.Parse(value);
+                double.TryParse(value, out rate);
                 this.NotifyOfPropertyChange(() => this.Rate);
             }
         }
@@ -101,11 +113,17 @@ namespace PresentationApp.ViewModels
             set
             {
                 
-                this.assetCount = Int32.Parse(value);
-                vol = CreateVector.Dense<double>(this.assetCount, 0.1);
-                cor = CreateMatrix.DenseDiagonal<double>(this.assetCount, 1);
-                x0 = CreateVector.Dense<double>(this.assetCount, 100);
+                bool success =Int32.TryParse(value, out assetCount);
+                if (success)
+                {
+                    vol = VectorUpdate(vol1, vol2, vol3);
+                    x0 = VectorUpdate(x01, x02, x03);
+                    cor = CorUpdate(cor12, cor13, cor23);
+                }
+                
                 this.NotifyOfPropertyChange(() => this.AssetCount);
+
+                
             }
         }
         public string TrajNo
@@ -116,7 +134,7 @@ namespace PresentationApp.ViewModels
             }
             set
             {
-                this.trajNo = int.Parse(value);
+                int.TryParse(value, out trajNo);
                 NotifyOfPropertyChange(() => this.TrajNo);
             }
         }
@@ -128,7 +146,7 @@ namespace PresentationApp.ViewModels
             }
             set
             {
-                this.excNo = int.Parse(value);
+                int.TryParse(value, out excNo);
                 NotifyOfPropertyChange(() => this.ExcNo);
             }
         }
@@ -141,7 +159,7 @@ namespace PresentationApp.ViewModels
             set
             {
 
-                this.seed = Int32.Parse(value);
+                Int32.TryParse(value, out seed);
                 this.NotifyOfPropertyChange(() => this.Seed);
 
             }
@@ -154,7 +172,7 @@ namespace PresentationApp.ViewModels
             }
             set
             {
-                this.endTime = double.Parse(value);
+                double.TryParse(value, out endTime);
                 this.NotifyOfPropertyChange(() => this.EndTime);
             }
         }
@@ -166,7 +184,7 @@ namespace PresentationApp.ViewModels
             }
             set
             {
-                this.degree = int.Parse(value);
+                int.TryParse(value, out degree);
                 NotifyOfPropertyChange(() => this.Degree);
             }
         }
@@ -178,7 +196,7 @@ namespace PresentationApp.ViewModels
             }
             set
             {
-                this.optionExp = double.Parse(value);
+                double.TryParse(value, out optionExp);
                 NotifyOfPropertyChange(() => this.OptionExp);
             }
         }
@@ -190,7 +208,7 @@ namespace PresentationApp.ViewModels
             }
             set
             {
-                this.optionStrike = double.Parse(value);
+                double.TryParse(value, out optionStrike);
                 NotifyOfPropertyChange(() => this.OptionStrike);
             }
         }
@@ -202,16 +220,206 @@ namespace PresentationApp.ViewModels
             }
             set
             {
-                this.price = double.Parse(value);
+                double.TryParse(value, out price);
                 NotifyOfPropertyChange(() => this.Price);
             }
         }
-        //buttons handlers
-        public void Volatility()
+        public string Vol1
         {
-            throw new NotImplementedException();
-            vol = ReadVector(this.assetCount);
+            get
+            {
+                return this.vol1.ToString();
+            }
+            set
+            {
+                bool success = double.TryParse(value, out vol1);
+                if (success)
+                {
+                    this.vol[0] = this.vol1;
+                }
+                NotifyOfPropertyChange(() => this.Vol1);
+            }
+
         }
+        public string Vol2
+        {
+            get
+            {
+                return this.vol2.ToString();
+            }
+            set
+            {
+                double.TryParse(value, out vol2);
+                if (assetCount > 1)
+                {
+                    this.vol[1] = this.vol2;
+                }
+                NotifyOfPropertyChange(() => this.Vol2);
+            }
+
+        }
+        public string Vol3
+        {
+            get
+            {
+                return this.vol3.ToString();
+            }
+            set
+            {
+                double.TryParse(value, out vol3);
+                if (assetCount > 2)
+                {
+                    this.vol[2] = this.vol3;
+                }
+                NotifyOfPropertyChange(() => this.Vol3);
+            }
+
+        }
+        public string X01
+        {
+            get
+            {
+                return this.x01.ToString();
+            }
+            set
+            {
+                bool success = double.TryParse(value, out x01);
+                if (success)
+                {
+                    this.x0[0] = this.x01;
+                }
+                
+                NotifyOfPropertyChange(() => this.X01);
+            }
+
+        }
+        public string X02
+        {
+            get
+            {
+                return this.x02.ToString();
+            }
+            set
+            {
+                bool success = double.TryParse(value, out x02);
+                if (success)
+                {
+                    if (assetCount > 1)
+                    {
+                        this.x0[1] = this.x02;
+                    }
+                }
+                
+                NotifyOfPropertyChange(() => this.X02);
+            }
+
+        }
+        public string X03
+        {
+            get
+            {
+                return this.x03.ToString();
+            }
+            set
+            {
+                bool success = double.TryParse(value, out x03);
+                if (assetCount > 2 && success)
+                {
+                    this.x0[2] = this.x03;
+                }
+                NotifyOfPropertyChange(() => this.X03);
+            }
+
+        }
+        public string Cor12
+        {
+            get
+            {
+                return this.cor12.ToString();
+            }
+            set
+            {
+                bool success = double.TryParse(value, out cor12);
+                if (assetCount > 1 && success)
+                {
+                    this.cor[0, 1] = this.cor12;
+                    this.cor[1, 0] = this.cor12;
+                }
+                NotifyOfPropertyChange(() => this.Cor12);
+            }
+
+        }
+        public string Cor13
+        {
+            get
+            {
+                return this.cor13.ToString();
+            }
+            set
+            {
+                bool success = double.TryParse(value, out cor13);
+                if (assetCount > 2 && success)
+                {
+                    this.cor[0,2] = this.cor13;
+                    this.cor[2, 0] = this.cor13;
+                }
+                NotifyOfPropertyChange(() => this.Cor13);
+            }
+
+        }
+        public string Cor23
+        {
+            get
+            {
+                return this.cor23.ToString();
+            }
+            set
+            {
+                bool success = double.TryParse(value, out cor23);
+                if (assetCount > 2 && success)
+                {
+                    this.cor[1,2] = this.cor23;
+                    this.cor[2, 1] = this.cor23;
+                }
+                NotifyOfPropertyChange(() => this.Cor23);
+            }
+
+        }
+        
+        public Vector<double> VectorUpdate (double val1, double val2, double val3)
+        {
+            Vector<double> result = CreateVector.Dense<double>(assetCount, 0);
+            result[0] = val1;
+            if (assetCount > 1)
+            {
+                result[1] = val2;
+                if (assetCount > 2)
+                {
+                    result[2] = val3;
+                }
+            }
+            return result;
+            
+        }
+        public Matrix<double> CorUpdate(double val12, double val13, double val23)
+        {
+            Matrix<double> result = CreateMatrix.Dense<double>(assetCount, assetCount, 1);
+            if (assetCount > 1)
+            {
+                result[0,1] = val12;
+                result[1,0] = val12;
+                if (assetCount > 2)
+                {
+                    result[2, 1] = val23;
+                    result[1, 2] = val23;
+                    result[2, 0] = val23;
+                    result[0, 2] = val23;
+                }
+            }
+            return result;
+
+        }
+        //buttons handlers
         public void Correlation()
         {
             throw new NotImplementedException();
@@ -224,7 +432,10 @@ namespace PresentationApp.ViewModels
         }
         public void SetModel()
         {
-
+            if (assetCount > 1)
+            {
+                System.Windows.MessageBox.Show(vol[1].ToString());
+            }
             if (hasAvg)
             {
                 ModelAppki.market = new LSM_CS.ModelAsianAvgFixedRate(rate,
