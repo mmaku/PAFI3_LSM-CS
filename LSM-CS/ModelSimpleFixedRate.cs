@@ -8,14 +8,14 @@ namespace LSM_CS
 {
     public class ModelSimpleFixedRate : Model
     {
-        private double Rate;
-        private Vector<double> Times_;
-        private List<Matrix<double>> Sample_;
-        private Vector<double> DiscountVector_;
-        
-        private bool up_to_date_time_ = false;
-        private bool up_to_date_discounts_ = false;
-        private bool up_to_date_trajectories_ = false;
+        protected double Rate;
+        protected Vector<double> Times_;
+        protected List<Matrix<double>> Sample_;
+        protected Vector<double> DiscountVector_;
+
+        protected bool up_to_date_time_ = false;
+        protected bool up_to_date_discounts_ = false;
+        protected bool up_to_date_trajectories_ = false;
 
         public ModelSimpleFixedRate(double rate,
                                   int seedValue,

@@ -86,5 +86,46 @@ namespace LSMTESTS
             Assert.AreEqual(ExpectedFactor_, model.DiscountToZero(StoppingTime));
         }
 
+        //AsianAvg test section
+        //-------------------------------------------------------------------------------
+
+        [TestMethod]
+        public void AsianAvgFixedRateTest_TrajectoriesDimensions()
+        {
+            ModelAsianAvgFixedRate model = new ModelAsianAvgFixedRate(
+                0.1, 1, trajectoriesNo, trajectoryLength, 2,
+                mu, sigma, x0, correlationMatrix);
+            List<la.Matrix<double>> ExpectedTrajectories_ = model.Trajectories();
+            Assert.AreEqual(ExpectedTrajectories_, model.Trajectories());
+            Assert.AreEqual(model.Trajectories().Count, 2 * mu.Count());
+            for (int i = 0; i < ExpectedTrajectories_.Count; i++)
+            {
+                Assert.AreEqual(trajectoryLength, ExpectedTrajectories_[i].RowCount);
+                Assert.AreEqual(trajectoriesNo, ExpectedTrajectories_[i].ColumnCount);
+            }
+            for (int i = 0; i < ExpectedTrajectories_.Count/2; i++)
+            {
+                Assert.AreEqual(ExpectedTrajectories_[i], model.Trajectories()[i]);
+                Assert.AreEqual(ExpectedTrajectories_[ExpectedTrajectories_.Count / 2+i], 
+                    MatrixExtensions.ColCumSumAvg(ExpectedTrajectories_[i]));
+            }
+        }
+        [TestMethod]
+        public void AsianAvgFixedRateTest_DiscountFactor()
+        {
+
+            ModelAsianAvgFixedRate model = new ModelAsianAvgFixedRate(
+                0.1, 1, trajectoriesNo, trajectoryLength, 2,
+                mu, sigma, x0, correlationMatrix
+                                  );
+            double ExpectedFactor_1 = 1 / Math.Pow(1.1, 0.5);
+            double ExpectedFactor_2 = 1 / 1.1;
+            for (int i = 0; i < trajectoryLength; i++)
+            {
+                Assert.AreEqual(ExpectedFactor_1, model.DiscountFactor(i, 1, 2));
+                Assert.AreEqual(ExpectedFactor_1, model.DiscountFactor(i, 2, 3));
+                Assert.AreEqual(ExpectedFactor_2, model.DiscountFactor(i, 0, 2));
+            }
+        }
     }
 }
